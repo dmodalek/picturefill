@@ -35,6 +35,22 @@
 						if (alt !== null) {
 							picImg.alt = alt;
 						}
+
+						/**
+						 * Customisation
+						 *
+						 * Added Attributes to the <img> tag
+ 						 */
+
+						var width = ps[ i ].getAttribute( "data-width" );
+            			if(width !== null) {
+							picImg.width = width;
+						}
+
+						var classes = ps[ i ].getAttribute( "data-class" );
+            			if(classes !== null) {
+							picImg.className = classes;
+						}
 					}
 					else if( matchedEl === picImg.parentNode ){
 						// Skip further actions if the correct image is already in place
@@ -43,7 +59,12 @@
 
 					picImg.src =  matchedEl.getAttribute( "data-src" );
 					matchedEl.appendChild( picImg );
-					picImg.removeAttribute("width");
+
+					/**
+					 * Customisation
+					 *
+					 * Deleted line that removed the width Attribute
+					 */
 					picImg.removeAttribute("height");
 				}
 				else if( picImg ){
